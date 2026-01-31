@@ -9,7 +9,12 @@ router.use(express.urlencoded({ extended: true })); // Parse form data
 
 // GET home page
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('login', { title: 'Express' });
+});
+
+//dashboard 
+router.get('/home', function (req, res, next) {
+  res.render('index', { title: 'CAMS | Dashboard' });
 });
 
 module.exports = router;
