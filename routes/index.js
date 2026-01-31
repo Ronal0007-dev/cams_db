@@ -14,7 +14,9 @@ router.get('/', function (req, res, next) {
 
 //dashboard 
 router.get('/home', function (req, res, next) {
-  res.render('index', { title: 'CAMS | Dashboard' });
+  const chartLabels = ['Male Students', 'Female Students'];
+  const chartData = [12, 19];
+  res.render('index', { title: 'CAMS | Dashboard', data: chartData, labels: chartLabels });
 });
 
 module.exports = router;

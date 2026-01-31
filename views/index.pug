@@ -1,0 +1,187 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(content="width=device-width, initial-scale=1.0" name="viewport")
+    script(src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js")
+    // Boxicons
+    link(rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css")
+    // My CSS
+    link(href="../stylesheets/dashboard.css" rel="stylesheet")
+    title CAMS | Admin
+  body
+    // SIDEBAR
+    section#sidebar
+      a.brand(href="#")
+        i.bx.bxs-smile.bx-lg
+        span.text AdminHub
+      ul.side-menu.top
+        li.active
+          a(href="#")
+            i.bx.bxs-dashboard.bx-sm
+            span.text Dashboard
+        li
+          a(href="#")
+            i.bx.bxs-shopping-bag-alt.bx-sm
+            span.text Students
+        li
+          a(href="#")
+            i.bx.bxs-doughnut-chart.bx-sm
+            span.text Teachers
+        li
+          a(href="#")
+            i.bx.bxs-message-dots.bx-sm
+            span.text Parents
+        li
+          a(href="#")
+            i.bx.bxs-group.bx-sm
+            span.text Classes
+      ul.side-menu.bottom
+        li
+          a(href="#")
+            i.bx.bxs-cog.bx-sm.bx-spin-hover
+            span.text Settings
+        li
+          a.logout(href="#")
+            i.bx.bx-power-off.bx-sm.bx-burst-hover
+            span.text Logout
+    // SIDEBAR
+    // CONTENT
+    section#content
+      // NAVBAR
+      nav
+        i.bx.bx-menu.bx-sm
+        form(action="#")
+          .form-input
+            input(placeholder="Search..." type="search")
+            button.search-btn(type="submit")
+              i.bx.bx-search
+        input#switch-mode.checkbox(hidden="" type="checkbox")
+        label.swith-lm(for="switch-mode")
+          i.bx.bxs-moon
+          i.bx.bx-sun
+          .ball
+        // Notification Bell
+        //- a#notificationIcon.notification(href="#")
+          i.bx.bxs-bell.bx-tada-hover
+          span.num 8
+        //- #notificationMenu.notification-menu
+          ul
+            li New message from John
+            li Your order has been shipped
+            li New comment on your post
+            li Update available for your app
+            li Reminder: Meeting at 3PM
+        // Profile Menu
+        a#profileIcon.profile(href="#")
+          img(alt="Profile" src="../images/user.png")
+        #profileMenu.profile-menu
+          ul
+            li
+              a(href="#") My Profile
+            li
+              a(href="#") Settings
+            li
+              a(href="#") Log Out
+      // NAVBAR
+      // MAIN
+      main
+        .head-title
+          .left
+            h1 Dashboard
+            ul.breadcrumb
+              li
+                a(href="#") Dashboard
+              li
+                i.bx.bx-chevron-right
+              li
+                a.active(href="#") Home
+        ul.box-info
+          li
+            i.bx.bxs-user
+            span.text
+              h3 1020
+              p Total Students
+          li
+            i.bx.bxs-group
+            span.text
+              h3 2834
+              p New Students (Current Month)
+          li
+            i.bx.bxs-dollar-circle
+            span.text
+              h3 N$2543.00
+              p Total Sales
+        .table-data
+          .order
+            .head
+              h3 Recent Orders
+              i.bx.bx-search
+              i.bx.bx-filter
+            table
+              thead
+                tr
+                  th Name
+                  th Joining Date
+                  th Class
+              tbody
+                tr
+                  td
+                    img(src="../images/user.png")
+                    p Micheal John
+                  td 18-10-2021
+                  td
+                    span.status.completed Completed
+                tr
+                  td
+                    img(src="../images/user.png")
+                    p Ryan Doe
+                  td 01-06-2022
+                  td
+                    span.status.pending Pending
+                tr
+                  td
+                    img(src="../images/user.png")
+                    p Tarry White
+                  td 14-10-2021
+                  td
+                    span.status.process Process
+          .todo
+            .head
+              h3 Students Chart
+              i.bx.bx-plus.icon
+              i.bx.bx-filter
+            div(style="width: 400px; height: 400px;")
+              canvas#myChart
+
+      // MAIN
+    // CONTENT
+    script(src="../javascripts/script_dash.js")
+    script(src="https://cdn.jsdelivr.net/npm/chart.js")
+    script.
+        const labels = !{JSON.stringify(labels)};
+        const dataValues = !{JSON.stringify(data)};
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: labels,
+            datasets: [{
+            label: 'total',
+            data: dataValues,
+            backgroundColor: [
+                'rgba(216, 219, 27)',
+                'rgba(54, 162, 235)'
+            ],
+            borderColor: 'rgba(216, 219, 27, 1)',
+            borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+            y: { beginAtZero: true }
+            }
+        }
+        });
+    
