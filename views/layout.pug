@@ -1,7 +1,45 @@
 doctype html
-html
+html(lang="en")
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset="UTF-8")
+    meta(content="width=device-width, initial-scale=1.0" name="viewport")
+    script(src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js")
+    // Boxicons
+    link(rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css")
+    // My CSS
+    link(href="../stylesheets/student.css" rel="stylesheet")
+    title=title
   body
     block content
+
+          // MAIN
+          // CONTENT
+          script(src="../javascripts/script_dash.js")
+          script(src="https://cdn.jsdelivr.net/npm/chart.js")
+          script.
+            const labels = !{JSON.stringify(labels)};
+            const dataValues = !{JSON.stringify(data)};
+
+            const ctx = document.getElementById('myChart').getContext('2d');
+            new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                label: 'total',
+                data: dataValues,
+                backgroundColor: [
+                    'rgba(216, 219, 27)',
+                    'rgba(54, 162, 235)'
+                ],
+                borderColor: 'rgba(216, 219, 27, 1)',
+                borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                y: { beginAtZero: true }
+                }
+            }
+            });
+        

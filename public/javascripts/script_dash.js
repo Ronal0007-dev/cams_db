@@ -63,11 +63,11 @@ switchMode.addEventListener('change', function () {
     }
 })
 
-// Notification Menu Toggle
-document.querySelector('.notification').addEventListener('click', function () {
-    document.querySelector('.notification-menu').classList.toggle('show');
-    document.querySelector('.profile-menu').classList.remove('show'); // Close profile menu if open
-});
+// // Notification Menu Toggle
+// document.querySelector('.notification').addEventListener('click', function () {
+//     document.querySelector('.notification-menu').classList.toggle('show');
+//     document.querySelector('.profile-menu').classList.remove('show'); // Close profile menu if open
+// });
 
 // Profile Menu Toggle
 document.querySelector('.profile').addEventListener('click', function () {

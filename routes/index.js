@@ -19,4 +19,17 @@ router.get('/home', function (req, res, next) {
   res.render('index', { title: 'CAMS | Dashboard', data: chartData, labels: chartLabels });
 });
 
+//student
+router.get('/student', function (req, res, next) {
+  const chartLabels = ['Male Students', 'Female Students'];
+  const chartData = [12, 19];
+  res.render('student', { title: 'CAMS | Student', data: chartData, labels: chartLabels });
+}); 
+
+
+//logout
+router.get('/logout', function (req, res, next) {
+  res.render('logout', { title: 'CAMS | Logout' });
+});
+
 module.exports = router;

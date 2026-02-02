@@ -1,4 +1,4 @@
-extends layout.pug
+extends ../layout
 
 block content
     // SIDEBAR
@@ -7,24 +7,24 @@ block content
         i.bx.bxs-smile.bx-lg
         span.text AdminHub
       ul.side-menu.top
-        li.active
-          a(href="#")
+        li
+          a(href="/home")
             i.bx.bxs-dashboard.bx-sm
             span.text Dashboard
-        li
-          a(href="#")
+        li.active
+          a(href="/student")
             i.bx.bxs-user.bx-sm
             span.text Students
         li
-          a(href="#")
+          a(href="/teacher")
             i.bx.bxs-widget.bx-sm
             span.text Teachers
         li
-          a(href="#")
+          a(href="/parent")
             i.bx.bxs-user-pin.bx-sm
             span.text Parents
         li
-          a(href="#")
+          a(href="/class")
             i.bx.bxs-group.bx-sm
             span.text Classes
       ul.side-menu.bottom
@@ -78,11 +78,11 @@ block content
             h1 Dashboard
             ul.breadcrumb
               li
-                a(href="#") Dashboard
+                a(href="/") Dashboard
               li
                 i.bx.bx-chevron-right
               li
-              a(href="#") Home
+              a(href="#") Student
         ul.box-info
           li
             i.bx.bxs-group
@@ -99,44 +99,3 @@ block content
             span.text
               h3 2543
               p Parents
-        .table-data
-          .order
-            .head
-              h3 Recent Orders
-              i.bx.bx-search
-              i.bx.bx-filter
-            table
-              thead
-                tr
-                  th Name
-                  th Joining Date
-                  th Class
-              tbody
-                tr
-                  td
-                    img(src="../images/user.png")
-                    p Micheal John
-                  td 18-10-2021
-                  td
-                    span.status.completed Completed
-                tr
-                  td
-                    img(src="../images/user.png")
-                    p Ryan Doe
-                  td 01-06-2022
-                  td
-                    span.status.pending Pending
-                tr
-                  td
-                    img(src="../images/user.png")
-                    p Tarry White
-                  td 14-10-2021
-                  td
-                    span.status.process Process
-          .todo
-            .head
-              h3 Students Chart
-              i.bx.bx-plus.icon
-              i.bx.bx-filter
-            div(style="width: 400px; height: 400px;")
-              canvas#myChart    
