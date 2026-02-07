@@ -63,17 +63,26 @@ switchMode.addEventListener('change', function () {
     }
 })
 
-// // Notification Menu Toggle
-// document.querySelector('.notification').addEventListener('click', function () {
-//     document.querySelector('.notification-menu').classList.toggle('show');
-//     document.querySelector('.profile-menu').classList.remove('show'); // Close profile menu if open
-// });
+// Notification Menu Toggle
+const notification = document.querySelector('.notification');
+if (notification) {
+    notification.addEventListener('click', function () {
+        document.querySelector('.notification-menu').classList.toggle('show');
+        const profileMenu = document.querySelector('.profile-menu');
+        if (profileMenu) profileMenu.classList.remove('show'); // Close profile menu if open
+    });
+}
 
 // Profile Menu Toggle
-document.querySelector('.profile').addEventListener('click', function () {
-    document.querySelector('.profile-menu').classList.toggle('show');
-    document.querySelector('.notification-menu').classList.remove('show'); // Close notification menu if open
-});
+const profile = document.querySelector('.profile');
+if (profile) {
+    profile.addEventListener('click', function () {
+        const profileMenu = document.querySelector('.profile-menu');
+        if (profileMenu) profileMenu.classList.toggle('show');
+        const notificationMenu = document.querySelector('.notification-menu');
+        if (notificationMenu) notificationMenu.classList.remove('show'); // Close notification menu if open
+    });
+}
 
 // Close menus if clicked outside
 window.addEventListener('click', function (e) {
