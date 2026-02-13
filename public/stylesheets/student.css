@@ -982,3 +982,23 @@ body.dark #content nav .profile-menu li a {
   --pbd: .15s;
   --pex: -24px;
 }
+
+.container#StuTab {
+	padding: 50px 10px;
+	border-collapse: collapse;
+}
+
+table > tbody > tr > td > a > i {
+	padding: 3px;
+}
+	
+
+#edit {
+	color: #53c566;
+}
+
+#delete {
+	color: var(--red);
+}
+
+
