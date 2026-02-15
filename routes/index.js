@@ -21,11 +21,13 @@ router.get('/home', function (req, res, next) {
 
 //student
 router.get('/student', function (req, res, next) {
-  const chartLabels = ['Male Students', 'Female Students'];
-  const chartData = [12, 19];
-  res.render('student', { title: 'CAMS | Student', data: chartData, labels: chartLabels });
+  res.render('student', { title: 'CAMS | Student' });
 }); 
 
+//add student
+router.get('/student/add', function (req, res, next) {
+  res.render('add_student', { title: 'CAMS | Add Student' });
+});
 
 //logout
 router.get('/logout', function (req, res, next) {

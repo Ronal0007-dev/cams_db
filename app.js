@@ -11,6 +11,8 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/index');
 const homeRouter = require('./routes/index');
+const studentRouter = require('./routes/index');
+const studentAddRouter = require('./routes/index');
 
 const app = express();
 
@@ -32,7 +34,7 @@ app.use(session({
 app.set('views', [
   path.join(__dirname, 'views'),
   path.join(__dirname, 'views/login'),
-  path.join(__dirname, 'views/student')]);
+  path.join(__dirname, 'views/student/')]);
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
@@ -47,6 +49,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/home', homeRouter);
+app.use('/student', studentRouter);
+app.use('/student/add', studentAddRouter);
 
 //disable fingerprinting
 app.disable('x-powered-by')

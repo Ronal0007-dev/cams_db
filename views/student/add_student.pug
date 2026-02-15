@@ -1,0 +1,95 @@
+extends ../layout
+
+block content
+    section#sidebar
+      a.brand(href="#")
+        i.bx.bxs-smile.bx-lg
+        span.text AdminHub
+      ul.side-menu.top
+        li
+          a(href="/home")
+            i.bx.bxs-dashboard.bx-sm
+            span.text Dashboard
+        li.active
+          a(href="/student")
+            i.bx.bxs-user.bx-sm
+            span.text Students
+        li
+          a(href="/teacher")
+            i.bx.bxs-widget.bx-sm
+            span.text Teachers
+        li
+          a(href="/parent")
+            i.bx.bxs-user-pin.bx-sm
+            span.text Parents
+        li
+          a(href="/class")
+            i.bx.bxs-group.bx-sm
+            span.text Classes
+      ul.side-menu.bottom
+        li
+          a.logout(href="/logout")
+            i.bx.bx-power-off.bx-sm.bx-burst-hover
+            span.text Logout
+    // SIDEBAR
+    // CONTENT
+    section#content
+      // NAVBAR
+      nav
+        i.bx.bx-menu.bx-sm
+        form(action="#")
+          .form-input
+            input(placeholder="Search..." type="search")
+            button.search-btn(type="submit")
+              i.bx.bx-search
+        input#switch-mode.checkbox(hidden="" type="checkbox")
+        label.swith-lm(for="switch-mode")
+          i.bx.bxs-moon
+          i.bx.bx-sun
+          .ball
+        // Profile Menu
+        a#profileIcon.profile(href="#")
+          img(alt="Profile" src="../images/user.png")
+        #profileMenu.profile-menu
+          ul
+            li
+              a(href="#") My Profile
+            li
+              a(href="#") Settings
+            li
+              a(href="#") Log Out
+      // NAVBAR
+      // MAIN
+      main
+        .head-title
+          .left
+            h1 Dashboard
+            ul.breadcrumb
+              li
+                a(href="/") Dashboard
+              li
+                i.bx.bx-chevron-right
+              li
+                a(href="#") Student
+              li
+                i.bx.bx-chevron-right
+              li.active
+              a(href="#" style="color: #3acf32;") Add Student
+
+        ul.box-info
+          li
+            i.bx.bxs-group
+            span.text
+              h3 1020
+              p Total Students
+          li
+            i.bx.bxs-user
+            span.text
+              h3 2834
+              p New Students (Current Month)
+          li
+            i.bx.bxs-group
+            span.text
+              h3 2543
+              p Parents
+        
