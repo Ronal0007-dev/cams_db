@@ -1,6 +1,69 @@
 extends ../layout
 
 block content
+    style.
+      .container {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      #StudentForm {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: auto;
+      }
+      h2 {
+        margin-bottom: 20px;
+        color: #64b1f0;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input, select {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #64b1f0;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      #names {
+        gap: 20px;
+        display: flex;
+      }
+      .form-group > #firstName {
+        width: 100%;
+        margin-right: 150px;
+      }
+      .form-group > #lastName {
+        width: 100%;
+        margin-right: 150px;
+      }
+
+      .form-group > #class {
+        width: 100%;
+        margin-right: 150px;
+      }
+      .form-group > #stream {
+        width: 100%;
+        margin-right: 150px;
+      }
+
+    //end of style
     section#sidebar
       a.brand(href="#")
         i.bx.bxs-smile.bx-lg
@@ -92,4 +155,35 @@ block content
             span.text
               h3 2543
               p Parents
+      .container#StuTab
+        main#StudentForm
+          h2 Add New Student
+          form(action="/add-student" method="POST")
+            .form-group#names
+              .form-group
+                label(for="firstName") First Name
+                input#firstName(type="text" name="firstName" required)
+              .form-group
+                label(for="lastName") Last Name
+                input#lastName(type="text" name="lastName" required)
+            .form-group
+              label(for="Parent'sName") Parent's Name
+              input#parentsName(type="text" name="parentsName" required)
+            .form-group
+              label(for="phone") Phone Number
+              input#phone(type="tel" name="phone" required)
+            .form-group#names
+              .form-group
+                label(for="class") Class
+                select#class(name="class" required)
+                  option(value="" disabled selected) Select Class
+                  option(value="Class 1") Class 1
+                  option(value="Class 2") Class 2
+              .form-group
+                label(for="stream") Stream
+                select#stream(name="stream" required)
+                  option(value="" disabled selected) Select Stream
+                  option(value="Stream H") Stream H
+                  option(value="Stream T") Stream T
+            button(type="submit") Add Student
         
