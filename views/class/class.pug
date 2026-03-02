@@ -3,19 +3,20 @@ extends ../layout
 block content
     style.
       .container {
-
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
+        margin-bottom: 20px;
+        
       }
-      #StudentForm {
+      #ClassForm {
         background-color: #fff;
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: auto;
-        font-family: var (--poppins);
+        width: 600px;
+        font-family: var(--poppins);
       }
       h2 {
         margin-bottom: 20px;
@@ -42,29 +43,6 @@ block content
         border-radius: 4px;
         cursor: pointer;
       }
-      #names {
-        gap: 20px;
-        display: flex;
-      }
-      .form-group > #firstName {
-        width: 100%;
-        margin-right: 150px;
-      }
-      .form-group > #lastName {
-        width: 100%;
-        margin-right: 150px;
-      }
-
-      .form-group > #class {
-        width: 100%;
-        margin-right: 150px;
-      }
-      .form-group > #stream {
-        width: 100%;
-        margin-right: 150px;
-      }
-
-    //end of style
     section#sidebar
       a.brand(href="#")
         i.bx.bxs-smile.bx-lg
@@ -74,7 +52,7 @@ block content
           a(href="/home")
             i.bx.bxs-dashboard.bx-sm
             span.text Dashboard
-        li.active
+        li
           a(href="/student")
             i.bx.bxs-user.bx-sm
             span.text Students
@@ -86,7 +64,7 @@ block content
           a(href="/parent")
             i.bx.bxs-user-pin.bx-sm
             span.text Parents
-        li
+        li.active
           a(href="/class")
             i.bx.bxs-group.bx-sm
             span.text Classes
@@ -127,19 +105,14 @@ block content
       main
         .head-title
           .left
-            h1 Add Student
+            h1 Class
             ul.breadcrumb
               li
                 a(href="/") Dashboard
               li
                 i.bx.bx-chevron-right
               li
-                a(href="#") Student
-              li
-                i.bx.bx-chevron-right
-              li.active
-              a(href="#" style="color: #3acf32;") Add Student
-
+                a(href="#" style="color: #3acf32;") Class
         ul.box-info
           li
             i.bx.bxs-group
@@ -156,35 +129,10 @@ block content
             span.text
               h3 2543
               p Parents
-      .container#StuTab
-        main#StudentForm
-          h2 Add New Student
-          form(action="/add-student" method="POST")
-            .form-group#names
-              .form-group
-                label(for="firstName") First Name:
-                input#firstName(type="text" name="firstName" required)
-              .form-group
-                label(for="lastName") Last Name:
-                input#lastName(type="text" name="lastName" required)
-            .form-group
-              label(for="Parent'sName") Parent's Name:
-              input#parentsName(type="text" name="parentsName" required)
-            .form-group
-              label(for="phone") Phone Number: Eg - 0712345678
-              input#phone(type="tel" name="phone" required)
-            .form-group#names
-              .form-group
-                label(for="class") Class:
-                select#class(name="class" required)
-                  option(value="" disabled selected) Select Class
-                  option(value="Class 1") Class 1
-                  option(value="Class 2") Class 2
-              .form-group
-                label(for="stream") Stream:
-                select#stream(name="stream" required)
-                  option(value="" disabled selected) Select Stream
-                  option(value="Stream H") Stream H
-                  option(value="Stream T") Stream T
-            button(type="submit") Add Student
-        
+    .container
+      form#ClassForm(action="/add-class" method="POST")
+        h2 Add Class
+        .form-group
+          label(for="className") Class Name:
+          input#className(type="text" name="className" required)
+        button(type="submit") Add Class

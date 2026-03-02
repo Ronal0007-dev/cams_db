@@ -29,6 +29,11 @@ router.get('/student/add', function (req, res, next) {
   res.render('add_student', { title: 'CAMS | Add Student' });
 });
 
+//add class
+router.get('/class', function (req, res, next) {
+  res.render('class', { title: 'CAMS | Class' });
+});
+
 //logout
 router.get('/logout', function (req, res, next) {
   res.render('logout', { title: 'CAMS | Logout' });

@@ -34,7 +34,8 @@ app.use(session({
 app.set('views', [
   path.join(__dirname, 'views'),
   path.join(__dirname, 'views/login'),
-  path.join(__dirname, 'views/student/')]);
+  path.join(__dirname, 'views/student/'),
+  path.join(__dirname, 'views/class/'),]);
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
