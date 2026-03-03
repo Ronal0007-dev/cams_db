@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-// Use flash messages for error handling
-// router.use(flash());
-// router.use((req, res, next) => {
-//   res.locals.success_msg = req.flash("success_msg");
-//   res.locals.error_msg = req.flash("error_msg");
-//   next();
-// });
+//flash messages
+const flash = require("connect-flash");
+router.use(flash());
+router.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  next();
+});
 
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = new Sequelize("cams_db", "root", "", {
@@ -17,6 +18,7 @@ const sequelize = new Sequelize("cams_db", "root", "", {
 });
 
 const user = require("../models/user")(sequelize, DataTypes);
+const Class = require("../models/class")(sequelize, DataTypes);
 
 //import db
 const db = require("../db_setup/db_setup");
@@ -55,19 +57,23 @@ router.post("/login", async function(req, res , next) {
   try {
     const userRecord = await user.findOne({ where: { email: userMail } }); 
     if (!userRecord) {
-      return res.redirect("/login");
+      return res.redirect("/");
     }
     const isMatch = await bcrypt.compareSync(password, userRecord.Password);
     if (isMatch) {
+      
       req.session.userId = userRecord.id;
+      req.flash('success_msg', 'Login successful!');
       res.redirect("/home");
     } else {
       console.log("Invalid password for email:", userMail);
-      res.redirect("/login");
+      req.flash('error_msg', 'Invalid email or password');
+      res.redirect("/");
     }
   } catch (error) {
+    req.flash('error_msg', 'An error occurred during login. Please try again.');
     console.error("Error during login:", error);
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
 
@@ -75,7 +81,7 @@ const isAuthenticated = (req, res, next) => {
   if (req.session.userId) {
     return next();
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 };
 
@@ -97,13 +103,39 @@ router.get("/student", isAuthenticated, function (req, res, next) {
 });
 
 //add student
-router.get("/student/add", function (req, res, next) {
+router.get("/student/add", isAuthenticated, function (req, res, next) {
   res.render("add_student", { title: "CAMS | Add Student" });
 });
 
 //add class
-router.get("/class", function (req, res, next) {
+router.get("/class", isAuthenticated, function (req, res, next) {
   res.render("class", { title: "CAMS | Class" });
+});
+
+//class
+router.get("/class/add", isAuthenticated, function (req, res, next) {
+  res.render("add_class", { title: "CAMS | Add Class" });
+});
+
+//post classes
+router.post("/add-class", isAuthenticated, async function (req, res, next) {
+  db.sequelize.sync().then(() => {
+    Class.findOrCreate({
+      where: { ClassName: req.body.className },
+      defaults: { ClassName: req.body.className }
+    }).then(([classRecord, created]) => {
+      if (created) {
+        console.log("Class created:", classRecord.toJSON());
+        res.redirect('/class');
+      } else {
+        console.log("Class already exists:", classRecord.toJSON());
+        res.redirect('/class');
+      }
+    }).catch(err => {
+      console.error("Error creating class:", err);
+      res.status(500).send("Error creating class");
+    });
+  });
 });
 
 //logout

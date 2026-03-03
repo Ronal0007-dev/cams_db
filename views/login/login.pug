@@ -7,13 +7,13 @@ html(lang="en")
     body
         #loginLogo
             img(src='../images/login_logo.png' alt='Logo' style='width: 400px; height: 400px; margin:-70px 0 -150px 0; z-index: 1;')
-        #loginNotification
-            if successes
-                for success in successes
-                    div.alert.alert-info #{ success }
-            if errs
-                for error, i in errs
-                    div.alert.alert-danger #{ error }
+        
+        if success_msg
+            for success in success_msg
+                div.alert.alert-info #{ success }
+        if error_msg
+            for error in error_msg
+                h2 #{ error }
         //form            
         .container
             h1 Please Login

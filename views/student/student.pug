@@ -2,7 +2,7 @@ extends ../layout
 
 block content
     section#sidebar
-      a.brand(href="#")
+      a.brand(href="/home")
         i.bx.bxs-smile.bx-lg
         span.text AdminHub
       ul.side-menu.top
@@ -15,11 +15,11 @@ block content
             i.bx.bxs-user.bx-sm
             span.text Students
         li
-          a(href="/teacher")
+          a(href="/teachers")
             i.bx.bxs-widget.bx-sm
             span.text Teachers
         li
-          a(href="/parent")
+          a(href="/parents")
             i.bx.bxs-user-pin.bx-sm
             span.text Parents
         li
@@ -68,7 +68,7 @@ block content
             li
               a(href="#") Settings
             li
-              a(href="#") Log Out
+              a(href="/logout") Log Out
       // NAVBAR
       // MAIN
       main
@@ -77,11 +77,11 @@ block content
             h1 Student
             ul.breadcrumb
               li
-                a(href="/") Dashboard
+                a(href="/home") Dashboard
               li
                 i.bx.bx-chevron-right
               li
-              a(href="#") Student
+              a(href="/student") Student
         ul.box-info
           li
             i.bx.bxs-group

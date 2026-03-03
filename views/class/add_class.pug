@@ -1,13 +1,54 @@
-extends layout.pug
+extends ../layout
 
 block content
-    // SIDEBAR
+    style.
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin-bottom: 20px;
+        
+      }
+      #ClassForm {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 600px;
+        font-family: var(--poppins);
+      }
+      h2 {
+        margin-bottom: 20px;
+        color: #64b1f0;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input, select {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #64b1f0;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
     section#sidebar
-      a.brand(href="/home")
+      a.brand(href="#")
         i.bx.bxs-smile.bx-lg
         span.text AdminHub
       ul.side-menu.top
-        li.active
+        li
           a(href="/home")
             i.bx.bxs-dashboard.bx-sm
             span.text Dashboard
@@ -23,7 +64,7 @@ block content
           a(href="/parents")
             i.bx.bxs-user-pin.bx-sm
             span.text Parents
-        li
+        li.active
           a(href="/class")
             i.bx.bxs-group.bx-sm
             span.text Classes
@@ -32,6 +73,7 @@ block content
           a.logout(href="/logout")
             i.bx.bx-power-off.bx-sm.bx-burst-hover
             span.text Logout
+    // SIDEBAR
     // CONTENT
     section#content
       // NAVBAR
@@ -47,17 +89,6 @@ block content
           i.bx.bxs-moon
           i.bx.bx-sun
           .ball
-        // Notification Bell
-        //- a#notificationIcon.notification(href="#")
-          i.bx.bxs-bell.bx-tada-hover
-          span.num 8
-        //- #notificationMenu.notification-menu
-          ul
-            li New message from John
-            li Your order has been shipped
-            li New comment on your post
-            li Update available for your app
-            li Reminder: Meeting at 3PM
         // Profile Menu
         a#profileIcon.profile(href="#")
           img(alt="Profile" src="../images/user.png")
@@ -74,14 +105,14 @@ block content
       main
         .head-title
           .left
-            h1 Dashboard
+            h1 Class
             ul.breadcrumb
               li
-                a(href="/home") Dashboard
+                a(href="/") Dashboard
               li
                 i.bx.bx-chevron-right
               li
-              a(href="/home") Home
+                a(href="#" style="color: #3acf32;") Class
         ul.box-info
           li
             i.bx.bxs-group
@@ -98,35 +129,11 @@ block content
             span.text
               h3 2543
               p Parents
-        .table-data
-          .order
-            .head
-              h3 New Registered Students
-              i.bx.bx-search
-              i.bx.bx-filter
-            table
-              thead
-                tr
-                  th No.
-                  th Name
-                  th Grade
-              tbody
-                tr
-                  td 1
-                  td John Doe
-                  td 16
-                tr
-                  td 2
-                  td Kalla Giga
-                  td 18
-                tr
-                  td 3
-                  td Alhaj Giga
-                  td 16
-          .todo
-            .head
-              h3 Students Chart
-              i.bx.bx-plus.icon
-              i.bx.bx-filter
-            div(style="width: 400px; height: 400px;")
-              canvas#myChart    
+    
+    .container
+      form#ClassForm(action="/add-class" method="POST")
+        h2 Add Class
+        .form-group
+          label(for="className") Class Name:
+          input#className(type="text" name="className" required)
+        button(type="submit") Add Class
