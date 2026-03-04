@@ -1180,10 +1180,14 @@ table>tbody>tr:nth-child(odd) {
  .alert {
   width: fit-content;
   padding: 15px;
-  margin-left: 2em;
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+.alert.fade-out {
+  opacity: 0;
 }
 
 .alert-success {

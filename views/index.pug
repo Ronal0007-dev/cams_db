@@ -84,10 +84,10 @@ block content
             a(href="/home") Home
       if success_msg
         for success in success_msg
-          div#notification_success #{ success }
+          div.alert.alert-success #{ success }
       if error_msg
         for error in error_msg
-          div#notification #{ error }
+          div.alert.alert-danger #{ error }
       ul.box-info
         li
           i.bx.bxs-group

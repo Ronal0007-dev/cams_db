@@ -14,11 +14,12 @@ labels.forEach((label) => {
     label.innerHTML = createWaveLabel(label.innerText);
 });
 
-
-const myDiv = document.getElementById('notification');
-
-// Use setTimeout to call a function after a delay
-setTimeout(function() {
-    // Set the element's style.display property to 'none' to hide it
-    myDiv.style.display = 'none';
-}, 5000); // 5000 milliseconds = 5 seconds
+//setTimeout for notification
+setTimeout(() => {
+  const flashMessage = document.querySelector('.alert');
+  if (flashMessage) {
+    flashMessage.classList.add('fade-out');
+    // Remove element from DOM after transition
+    setTimeout(() => flashMessage.remove(), 500); 
+  }
+}, 3000); // 3 seconds delay
