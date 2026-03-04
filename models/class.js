@@ -7,5 +7,3 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Class;
 };
-     
-module.exports = Class;

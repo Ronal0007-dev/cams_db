@@ -10,7 +10,7 @@ block content
           a(href="/home")
             i.bx.bxs-dashboard.bx-sm
             span.text Dashboard
-        li.active
+        li
           a(href="/student")
             i.bx.bxs-user.bx-sm
             span.text Students
@@ -22,7 +22,7 @@ block content
           a(href="/parents")
             i.bx.bxs-user-pin.bx-sm
             span.text Parents
-        li
+        li.active
           a(href="/class")
             i.bx.bxs-group.bx-sm
             span.text Classes
@@ -74,7 +74,7 @@ block content
       main
         .head-title
           .left
-            h1 Student
+            h1 Class
             ul.breadcrumb
               li
                 a(href="/home") Dashboard
@@ -98,7 +98,13 @@ block content
             span.text
               h3 2543
               p Parents
-      
+      //Display Success Messages
+      if success_msg
+          for success in success_msg
+              div.alert.alert-success #{ success }
+      if error_msg
+          for error in error_msg
+              div.alert.alert-danger #{ error }
       button.continue-application
         div
           .pencil
@@ -109,15 +115,7 @@ block content
             .paper
         a(href="/class/add") 
           | Add Class
-      //Display Success Messages
-      if (success_msg.length > 0)
-        div.alert-success(style="color: green; border: 1px solid green; padding: 10px;")
-          | #{success_msg}
       
-      // Display Error Messages
-      if (error_msg.length > 0)
-        div.alert-error(style="color: red; border: 1px solid red; padding: 10px;")
-          | #{error_msg}
       //table
       .container#StuTab
         table.table-data#studentTable

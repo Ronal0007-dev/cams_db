@@ -39,7 +39,7 @@ router.get("/", function (req, res, next) {
 //       fName: "Kalla",
 //       lName: "Giga",
 //       email: "kallagiga@gmail.com",
-//       Password: bcrypt.hashSync("password123", 10)
+//       password: bcrypt.hashSync("123", 10)
 //     }).then(user => {
 //       console.log("User created:", user.toJSON());
 //       res.redirect('/home');
@@ -59,14 +59,13 @@ router.post("/login", async function(req, res , next) {
     if (!userRecord) {
       return res.redirect("/");
     }
-    const isMatch = await bcrypt.compareSync(password, userRecord.Password);
+    const isMatch = await bcrypt.compareSync(password, userRecord.password);
     if (isMatch) {
       
       req.session.userId = userRecord.id;
       req.flash('success_msg', 'Login successful!');
       res.redirect("/home");
     } else {
-      console.log("Invalid password for email:", userMail);
       req.flash('error_msg', 'Invalid email or password');
       res.redirect("/");
     }
@@ -119,19 +118,23 @@ router.get("/class/add", isAuthenticated, function (req, res, next) {
 
 //post classes
 router.post("/add-class", isAuthenticated, async function (req, res, next) {
+  const className = req.body.className;
   db.sequelize.sync().then(() => {
     Class.findOrCreate({
-      where: { ClassName: req.body.className },
-      defaults: { ClassName: req.body.className }
+      where: { className: className },
+      defaults: { className: className }
     }).then(([classRecord, created]) => {
       if (created) {
+        req.flash('success_msg', 'Class created successfully!');
         console.log("Class created:", classRecord.toJSON());
         res.redirect('/class');
       } else {
+        req.flash('error_msg', 'Class already exists!');
         console.log("Class already exists:", classRecord.toJSON());
         res.redirect('/class');
       }
     }).catch(err => {
+      
       console.error("Error creating class:", err);
       res.status(500).send("Error creating class");
     });

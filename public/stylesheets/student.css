@@ -1159,3 +1159,42 @@ table>tbody>tr:nth-child(odd) {
 	border: 1px solid rgba(251, 146, 60, 0.3);
 }
 
+/* #notification_success {
+	background-color: rgba(46, 204, 13, 0.5);
+	border-radius: 3px;
+	height: fit-content;
+    width: fit-content;
+    margin-bottom: 5px;
+	color: #FFFFFF;
+}
+
+#notification {
+	background-color: indianred;
+	border-radius: 3px;
+	height: fit-content;
+    width: fit-content;
+    margin-bottom: 5px;
+}
+ */
+
+ .alert {
+  width: fit-content;
+  padding: 15px;
+  margin-left: 2em;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+

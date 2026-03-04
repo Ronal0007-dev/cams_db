@@ -1,132 +1,138 @@
 extends layout.pug
 
 block content
-    // SIDEBAR
-    section#sidebar
-      a.brand(href="/home")
-        i.bx.bxs-smile.bx-lg
-        span.text AdminHub
-      ul.side-menu.top
-        li.active
-          a(href="/home")
-            i.bx.bxs-dashboard.bx-sm
-            span.text Dashboard
-        li
-          a(href="/student")
-            i.bx.bxs-user.bx-sm
-            span.text Students
-        li
-          a(href="/teachers")
-            i.bx.bxs-widget.bx-sm
-            span.text Teachers
-        li
-          a(href="/parents")
-            i.bx.bxs-user-pin.bx-sm
-            span.text Parents
-        li
-          a(href="/class")
-            i.bx.bxs-group.bx-sm
-            span.text Classes
-      ul.side-menu.bottom
-        li
-          a.logout(href="/logout")
-            i.bx.bx-power-off.bx-sm.bx-burst-hover
-            span.text Logout
-    // CONTENT
-    section#content
-      // NAVBAR
-      nav
-        i.bx.bx-menu.bx-sm
-        form(action="#")
-          .form-input
-            input(placeholder="Search..." type="search")
-            button.search-btn(type="submit")
-              i.bx.bx-search
-        input#switch-mode.checkbox(hidden="" type="checkbox")
-        label.swith-lm(for="switch-mode")
-          i.bx.bxs-moon
-          i.bx.bx-sun
-          .ball
-        // Notification Bell
-        //- a#notificationIcon.notification(href="#")
-          i.bx.bxs-bell.bx-tada-hover
-          span.num 8
-        //- #notificationMenu.notification-menu
-          ul
-            li New message from John
-            li Your order has been shipped
-            li New comment on your post
-            li Update available for your app
-            li Reminder: Meeting at 3PM
-        // Profile Menu
-        a#profileIcon.profile(href="#")
-          img(alt="Profile" src="../images/user.png")
-        #profileMenu.profile-menu
-          ul
-            li
-              a(href="#") My Profile
-            li
-              a(href="#") Settings
-            li
-              a(href="/logout") Log Out
-      // NAVBAR
-      // MAIN
-      main
-        .head-title
-          .left
-            h1 Dashboard
-            ul.breadcrumb
-              li
-                a(href="/home") Dashboard
-              li
-                i.bx.bx-chevron-right
-              li
-              a(href="/home") Home
-        ul.box-info
+  // SIDEBAR
+  section#sidebar
+    a.brand(href="/home")
+      i.bx.bxs-smile.bx-lg
+      span.text AdminHub
+    ul.side-menu.top
+      li.active
+        a(href="/home")
+          i.bx.bxs-dashboard.bx-sm
+          span.text Dashboard
+      li
+        a(href="/student")
+          i.bx.bxs-user.bx-sm
+          span.text Students
+      li
+        a(href="/teachers")
+          i.bx.bxs-widget.bx-sm
+          span.text Teachers
+      li
+        a(href="/parents")
+          i.bx.bxs-user-pin.bx-sm
+          span.text Parents
+      li
+        a(href="/class")
+          i.bx.bxs-group.bx-sm
+          span.text Classes
+    ul.side-menu.bottom
+      li
+        a.logout(href="/logout")
+          i.bx.bx-power-off.bx-sm.bx-burst-hover
+          span.text Logout
+  // CONTENT
+  section#content
+    // NAVBAR
+    nav
+      i.bx.bx-menu.bx-sm
+      form(action="#")
+        .form-input
+          input(placeholder="Search..." type="search")
+          button.search-btn(type="submit")
+            i.bx.bx-search
+      input#switch-mode.checkbox(hidden="" type="checkbox")
+      label.swith-lm(for="switch-mode")
+        i.bx.bxs-moon
+        i.bx.bx-sun
+        .ball
+      // Notification Bell
+      //- a#notificationIcon.notification(href="#")
+        i.bx.bxs-bell.bx-tada-hover
+        span.num 8
+      //- #notificationMenu.notification-menu
+        ul
+          li New message from John
+          li Your order has been shipped
+          li New comment on your post
+          li Update available for your app
+          li Reminder: Meeting at 3PM
+      // Profile Menu
+      a#profileIcon.profile(href="#")
+        img(alt="Profile" src="../images/user.png")
+      #profileMenu.profile-menu
+        ul
           li
-            i.bx.bxs-group
-            span.text
-              h3 1020
-              p Total Students
+            a(href="#") My Profile
           li
-            i.bx.bxs-user
-            span.text
-              h3 2834
-              p New Students (Current Month)
+            a(href="#") Settings
           li
-            i.bx.bxs-group
-            span.text
-              h3 2543
-              p Parents
-        .table-data
-          .order
-            .head
-              h3 New Registered Students
-              i.bx.bx-search
-              i.bx.bx-filter
-            table
-              thead
-                tr
-                  th No.
-                  th Name
-                  th Grade
-              tbody
-                tr
-                  td 1
-                  td John Doe
-                  td 16
-                tr
-                  td 2
-                  td Kalla Giga
-                  td 18
-                tr
-                  td 3
-                  td Alhaj Giga
-                  td 16
-          .todo
-            .head
-              h3 Students Chart
-              i.bx.bx-plus.icon
-              i.bx.bx-filter
-            div(style="width: 400px; height: 400px;")
-              canvas#myChart    
+            a(href="/logout") Log Out
+    // NAVBAR
+    // MAIN
+    main
+      .head-title
+        .left
+          h1 Dashboard
+          ul.breadcrumb
+            li
+              a(href="/home") Dashboard
+            li
+              i.bx.bx-chevron-right
+            li
+            a(href="/home") Home
+      if success_msg
+        for success in success_msg
+          div#notification_success #{ success }
+      if error_msg
+        for error in error_msg
+          div#notification #{ error }
+      ul.box-info
+        li
+          i.bx.bxs-group
+          span.text
+            h3 1020
+            p Total Students
+        li
+          i.bx.bxs-user
+          span.text
+            h3 2834
+            p New Students (Current Month)
+        li
+          i.bx.bxs-group
+          span.text
+            h3 2543
+            p Parents
+      .table-data
+        .order
+          .head
+            h3 New Registered Students
+            i.bx.bx-search
+            i.bx.bx-filter
+          table
+            thead
+              tr
+                th No.
+                th Name
+                th Grade
+            tbody
+              tr
+                td 1
+                td John Doe
+                td 16
+              tr
+                td 2
+                td Kalla Giga
+                td 18
+              tr
+                td 3
+                td Alhaj Giga
+                td 16
+        .todo
+          .head
+            h3 Students Chart
+            i.bx.bx-plus.icon
+            i.bx.bx-filter
+          div(style="width: 400px; height: 400px;")
+            canvas#myChart    
